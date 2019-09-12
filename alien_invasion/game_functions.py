@@ -8,16 +8,35 @@ def check_events(ship):
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RIGHT:
-                # ship.rect.centerx += 1
-                ship.move_right = True
-            elif event.key == pygame.K_LEFT:
-                ship.move_left = True
+            # if event.key == pygame.K_RIGHT:
+            #     # ship.rect.centerx += 1
+            #     ship.move_right = True
+            # elif event.key == pygame.K_LEFT:
+            #     ship.move_left = True
+            check_keydown_events(event, ship)
         elif event.type == pygame.KEYUP:
-            if event.key == pygame.K_RIGHT:
-                ship.move_right = False
-            elif event.key == pygame.K_LEFT:
-                ship.move_left = False
+            # if event.key == pygame.K_RIGHT:
+            #     ship.move_right = False
+            # elif event.key == pygame.K_LEFT:
+            #     ship.move_left = False
+            check_keyup_events(event, ship)
+
+
+def check_keydown_events(event, ship):
+    '''响应按键'''
+    if event.key == pygame.K_RIGHT:
+        # ship.rect.centerx += 1
+        ship.move_right = True
+    elif event.key == pygame.K_LEFT:
+        ship.move_left = True
+
+
+def check_keyup_events(event, ship):
+    '''响应松开'''
+    if event.key == pygame.K_RIGHT:
+        ship.move_right = False
+    elif event.key == pygame.K_LEFT:
+        ship.move_left = False
 
 
 def update_screen(ai_settings, screen, ship):
