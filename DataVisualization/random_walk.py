@@ -20,7 +20,7 @@ class RandomWalk():
         # 不断漫步，直到列表达到指定长度
         while len(self.x_value) < self.num_points:
             # 决定前进方向以及沿这个方向前进的距离
-            x_direction = choice([1, -1])#向右为1，向左为-1
+            x_direction = choice([1, -1])  # 向右为1，向左为-1
             x_distance = choice([0, 1, 2, 3, 4])
             x_step = x_direction * x_distance
 
@@ -36,5 +36,5 @@ class RandomWalk():
             next_x = self.x_value[-1] + x_step
             next_y = self.y_value[-1] + y_step
 
-            self.x_values.append(next_x)
-            self.y_values.append(next_y)
+            self.x_value.append(next_x)
+            self.y_value.append(next_y)
