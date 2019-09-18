@@ -15,7 +15,7 @@ plt.scatter(x_values, y_values, c=y_values, cmap=plt.cm.Blues, edgecolors='none'
             s=40)  # c设置为y值列表，使用cmap告诉pyplot使用哪个颜色映射
 
 # 设置图表标题并给坐标轴加上标签
-plt.title("Square Nubers", fontsize=24)
+plt.title("Square Numbers", fontsize=24)
 plt.xlabel("Value", fontsize=14)
 plt.ylabel("Square of Value", fontsize=14)
 
