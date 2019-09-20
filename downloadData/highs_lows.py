@@ -1,7 +1,9 @@
 # -*- coding:utf-8 -*-
 
 import csv
+from matplotlib import pyplot as plt
 
+# 从文件中获取最高气温
 filename = 'sitka_weather_07-2014.csv'
 with open(filename) as f:
     reader = csv.reader(f)
@@ -13,6 +15,20 @@ with open(filename) as f:
 
     highs = []
     for row in reader:
-        highs.append(row[1])  # 读取csv对应index的值
+        high = int(row[1])  # 读取csv对应index的值，同时将字符串转换为数字int
+        highs.append(high)
 
     print(highs)
+
+# 根据数据绘制图形
+fig = plt.figure(dpi=300, figsize=(10, 6))
+plt.plot(highs, c='red')
+
+# 设置图形格式
+plt.title("Daily high temperatures,July 2014", fontsize=24)
+plt.xlabel('', fontsize=16)
+plt.ylabel("Temperature (F)", fontsize=16)
+plt.tick_params(axis='both', which='major', labelsize=16)
+
+plt.savefig('high_low.png', bbox_inches="tight")
+plt.show()
