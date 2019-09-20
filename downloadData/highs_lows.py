@@ -10,3 +10,9 @@ with open(filename) as f:
 
     for index, column_header in enumerate(header_row):  # 获取每个元素的索引和值
         print(index, column_header)
+
+    highs = []
+    for row in reader:
+        highs.append(row[1])  # 读取csv对应index的值
+
+    print(highs)
