@@ -27,3 +27,17 @@ import json
 # # file_urllib = json.load(req)  # 'bytes' object has no attribute 'read'
 # file_urllib = json.loads(req)
 # print(file_urllib)
+
+# 将数据加载到一个列表中
+filename = 'btc_close_2017.json'
+with open(filename)as f:
+    btc_data = json.load(f)
+
+# 打印每一天的信息
+for btc_dict in btc_data:
+    date = btc_dict['date']
+    month = btc_dict['month']
+    week = btc_dict['week']
+    weekday = btc_dict['weekday']
+    close = btc_dict['close']
+    print("{}is month {} week{},{},the close price is {} RMB".format(date, month, week, weekday, close))#格式化方式
