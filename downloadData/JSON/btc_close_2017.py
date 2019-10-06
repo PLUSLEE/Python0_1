@@ -10,6 +10,8 @@ from urllib.request import urlopen
 #     from urllib.request import urlopen
 
 import json
+
+import math
 import pygal
 
 # json_url = 'http://raw.githubusercontent.com/muxuezi/btc/master/btc_close_2017.json'
@@ -58,10 +60,14 @@ for btc_dict in btc_data:
     weekdays.append(btc_dict['weekday'])
     close.append(int(float(btc_dict['close'])))
 
-line_chart = pygal.Line(x_label_rotation=20, show_minor_x_labels=False)#x_label_rotation=20,旋转20° ；show_minor_x_labels=False不用显示所有x轴标签
+line_chart = pygal.Line(x_label_rotation=20,
+                        show_minor_x_labels=False)  # x_label_rotation=20,旋转20° ；show_minor_x_labels=False不用显示所有x轴标签
 line_chart.title = "收盘价（¥）"
 line_chart.x_labels = dates
 N = 20  # x坐标轴每隔20天显示一次
 line_chart.x_labels_major = dates[::N]
-line_chart.add('收盘价', close)
-line_chart.render_to_file("收盘价折线图（¥）.svg")
+close_log = [math.log10(_) for _ in close]#半对数变换，剔除非线性趋势，整体上涨趋势，更接近线性增长
+
+# line_chart.add('收盘价', close)
+line_chart.add('收盘价', close_log)
+line_chart.render_to_file("收盘价折线图2（¥）.svg")
