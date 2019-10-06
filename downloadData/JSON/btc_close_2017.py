@@ -36,8 +36,9 @@ with open(filename)as f:
 # 打印每一天的信息
 for btc_dict in btc_data:
     date = btc_dict['date']
-    month = btc_dict['month']
-    week = btc_dict['week']
+    month = int(btc_dict['month'])
+    week = int(btc_dict['week'])
     weekday = btc_dict['weekday']
-    close = btc_dict['close']
-    print("{}is month {} week{},{},the close price is {} RMB".format(date, month, week, weekday, close))#格式化方式
+    # close = int(btc_dict['close'])  # Python 不能直接将包含小数点的字符串转换为整数；正确操作：先转换为浮点数，再将浮点数转换为整数。
+    close = int(float(btc_dict['close']))
+    print("{}is month {} week{},{},the close price is {} RMB".format(date, month, week, weekday, close))  # 格式化方式
