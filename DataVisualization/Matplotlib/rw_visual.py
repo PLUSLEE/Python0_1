@@ -2,7 +2,7 @@
 
 import matplotlib.pyplot as plt
 
-from DataVisualization.matplotlib.random_walk import RandomWalk
+from DataVisualization.Matplotlib.random_walk import RandomWalk
 
 while True:
     rw = RandomWalk(50000)
